@@ -145,7 +145,7 @@
             this.Controls.Add(this.name);
             this.Controls.Add(this.add);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "リストのサンプル";
             this.ResumeLayout(false);
             this.PerformLayout();
 
