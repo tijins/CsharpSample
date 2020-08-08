@@ -55,5 +55,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show(text);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            new DicSample().Show();
+        }
     }
 }

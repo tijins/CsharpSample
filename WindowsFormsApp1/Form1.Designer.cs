@@ -146,6 +146,7 @@
             this.Controls.Add(this.add);
             this.Name = "Form1";
             this.Text = "リストのサンプル";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
