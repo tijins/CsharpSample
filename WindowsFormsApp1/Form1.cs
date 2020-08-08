@@ -13,37 +13,47 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        private List<String> nameList = new List<String>();
+        private BindingList<User> userList = new BindingList<User>();
 
 
         public Form1()
         {
             InitializeComponent();
+            listBox.DataSource = userList;
+            listBox.DisplayMember = "Name";
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            var text1 = String.Format("{0}の住所は{1}です",
+            var text1 = String.Format("{0}の住所は{1}年齢は{2}です",
                 name.Text,
-                address.Text);
+                address.Text,
+                age.Text);
             MessageBox.Show(text1);
 
-            var text2 = $"{name.Text}の住所は{address.Text}です";
+            var text2 = $"{name.Text}の住所は{address.Text}年齢は{age.Text}です";
             MessageBox.Show(text2);
 
-            nameList.Add(name.Text);
-            showList();
+            var user = new User(name.Text, address.Text, int.Parse(age.Text));
+            userList.Add(user);
+            ClearInput();
         }
 
-        private void showList()
+        private void ClearInput()
         {
-            var sb = new StringBuilder();
-            foreach(var text in nameList)
-            {
-                sb.AppendLine(text);
-            }
-            list.Text = sb.ToString();
+            name.Text = "";
+            address.Text = "";
+            age.Text = "";
+        }
 
+        private void listBox_Click(object sender, EventArgs e)
+        {
+            var user = listBox.SelectedItem as User;
+            if (user != null)
+            {
+                var text = $"{user.Name}の住所は{user.Address}年齢は{user.Age}です";
+                MessageBox.Show(text);
+            }
         }
     }
 }
